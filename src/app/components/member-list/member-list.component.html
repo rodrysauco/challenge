@@ -1,10 +1,13 @@
 <div class="member-list">
   <app-search (search)="onSearch($event)" (reset)="onReset()"></app-search>
-  <div class="member-list__body">
+  <div class="member-list__body" *ngIf="memberList?.length > 0">
     <app-member-list-item
       *ngFor="let member of memberList"
       [member]="member"
       (select)="handleSelect($event)"
     ></app-member-list-item>
+  </div>
+  <div class="member-list__body--empty" *ngIf="memberList?.length === 0">
+    No results 
   </div>
 </div>

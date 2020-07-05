@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CongressApiService } from "src/app/services/congress-api.service";
 import { Router } from "@angular/router";
 import { SpinnerService } from "src/app/shared/services/spinner.service";
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-chamber",
@@ -27,7 +27,7 @@ export class ChamberComponent implements OnInit {
       },
       (error) => {
         this.spinnerService.display(false);
-        this.snackBar.open(error,'Close');
+        this.snackBar.open(error, "Close");
       }
     );
   }
@@ -58,23 +58,31 @@ export class ChamberComponent implements OnInit {
   }
 
   filterByGender(gender: string) {
-    this.filteredData = this.data.filter((member) => member.gender === gender);
+    this.filteredData = this.data
+      ? this.data.filter((member) => member.gender === gender)
+      : [];
   }
 
   filterByTitle(title: string) {
-    this.filteredData = this.data.filter((member) =>
-      member.title.toLowerCase().includes(title.toLowerCase())
-    );
+    this.filteredData = this.data
+      ? this.data.filter((member) =>
+          member.title.toLowerCase().includes(title.toLowerCase())
+        )
+      : [];
   }
   filterByName(name: string) {
-    this.filteredData = this.data.filter((member) => {
-      const fullName = `${member.first_name} ${member.last_name}`;
-      if (fullName.toLowerCase().includes(name.toLowerCase())) {
-        return member;
-      }
-    });
+    this.filteredData = this.data
+      ? this.data.filter((member) => {
+          const fullName = `${member.first_name} ${member.last_name}`;
+          if (fullName.toLowerCase().includes(name.toLowerCase())) {
+            return member;
+          }
+        })
+      : [];
   }
   filterByParty(party: string) {
-    this.filteredData = this.data.filter((member) => member.party === party);
+    this.filteredData = this.data
+      ? this.data.filter((member) => member.party === party)
+      : [];
   }
 }

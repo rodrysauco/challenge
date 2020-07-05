@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, of, throwError } from "rxjs";
 import { map, tap, catchError } from "rxjs/operators";
 import { SpinnerService } from "../shared/services/spinner.service";

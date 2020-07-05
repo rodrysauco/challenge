@@ -1,8 +1,8 @@
 <div class="more-details" *ngIf="congressMember">
-  <mat-card>
-    <div class="more-details__back" (click)="goBackToList()">
-      <i class="material-icons">chevron_left</i>Go Back
-    </div>
+  <div class="more-details__back" (click)="goBackToList()">
+    <i class="material-icons">chevron_left</i>Go Back
+  </div>
+  <mat-card class="more-details__card">
     <mat-card-header>
       <mat-card-title
         >{{ congressMember.first_name }}
@@ -22,6 +22,9 @@
       <p>Current party: {{ congressMember.current_party }}</p>
       <p>Most recent vote: {{congressMember.most_recent_vote}}</p>
     </mat-card-content>
-    <mat-card-actions> </mat-card-actions>
+    <mat-card-actions class="more-details__actions"> 
+      <a target="_blank" href="https://twitter.com/{{congressMember.twitter_account}}"><img src="assets/logos/twitter.png" alt="Twitter"></a>
+      <a target="_blank" href="https://facebook.com/{{congressMember.facebook_account}}"><img src="assets/logos/facebook.png" alt="Twitter"></a>
+    </mat-card-actions>
   </mat-card>
 </div>

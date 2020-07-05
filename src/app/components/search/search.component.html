@@ -12,7 +12,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field
+    <mat-form-field class="search__input"
       *ngIf="optionSelected === 'title' || optionSelected === 'name'"
     >
       <input formControlName="searchValue" matInput placeholder="Value" />
