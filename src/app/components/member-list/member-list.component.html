@@ -1,10 +1,10 @@
 <div class="member-list">
-	<app-search (search)="onSearch($event)"></app-search>
-	<div class="member-list__body">
-		<app-member-list-item
-		*ngFor="let member of memberList"
-		[member]="member"
-		(select)="handleSelect($event)"
-		></app-member-list-item>
-	</div>
+  <app-search (search)="onSearch($event)" (reset)="onReset()"></app-search>
+  <div class="member-list__body">
+    <app-member-list-item
+      *ngFor="let member of memberList"
+      [member]="member"
+      (select)="handleSelect($event)"
+    ></app-member-list-item>
+  </div>
 </div>

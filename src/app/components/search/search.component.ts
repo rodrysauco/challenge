@@ -8,6 +8,8 @@ import { FormBuilder, Validators } from "@angular/forms";
 })
 export class SearchComponent implements OnInit {
   @Output() search = new EventEmitter();
+  @Output() reset = new EventEmitter();
+
   options = [
     { displayText: "Title", value: "title" },
     { displayText: "Name", value: "name" },
@@ -33,13 +35,16 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   cleanFormField() {
-    this.searchForm.patchValue({ searchValue: '' });
+    this.searchForm.patchValue({ searchValue: "" });
   }
 
   get optionSelected() {
     return this.searchForm.get("searchOption").value;
   }
 
+  doReset() {
+    this.reset.emit();
+  }
   doSearch() {
     this.search.emit(this.searchForm.value);
   }

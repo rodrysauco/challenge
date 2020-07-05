@@ -9,12 +9,15 @@ import { AppComponent } from "./app.component";
 import { HttpInterceptor } from "./services/interceptor";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { LandingComponent } from "./containers/landing/landing.component";
 import { ChamberComponent } from "./containers/chamber/chamber.component";
 import { SearchComponent } from "./components/search/search.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule, MatCardModule, MatButtonModule } from "@angular/material";
+import {
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+} from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
 import { MemberListComponent } from "./components/member-list/member-list.component";
 import { MemberListItemComponent } from "./components/member-list-item/member-list-item.component";
@@ -25,10 +28,9 @@ import { SpinnerComponent } from "./shared/spinner/spinner.component";
 @NgModule({
   declarations: [
     AppComponent,
-	ChamberComponent,
+    ChamberComponent,
     FooterComponent,
     HeaderComponent,
-    LandingComponent,
     MemberListItemComponent,
     MemberListComponent,
     SearchComponent,
@@ -41,8 +43,8 @@ import { SpinnerComponent } from "./shared/spinner/spinner.component";
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-	HttpClientModule,
-	MatButtonModule,
+    HttpClientModule,
+    MatButtonModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,

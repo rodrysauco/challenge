@@ -1,10 +1,10 @@
 <div class="chamber">
-	<div class="chamber__title">
-	</div>
-	<app-member-list 
-		[memberList]="data"
-		(selectedMember)="showMemberInfo($event)"
-		(search)="handleSearch($event)"
-		>
-	</app-member-list>
+  <div class="chamber__title"></div>
+  <app-member-list
+    [memberList]="filteredData"
+    (selectedMember)="showMemberInfo($event)"
+    (search)="handleSearch($event)"
+    (reset)="handleReset()"
+  >
+  </app-member-list>
 </div>
