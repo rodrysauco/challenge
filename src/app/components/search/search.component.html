@@ -1,0 +1,15 @@
+<div class="search">
+	<form [formGroup]="searchForm" (ngSubmit)="doSearch()">
+		<mat-form-field>
+			<input formControlName="selectedCongress" matInput placeholder="Congress">
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Chamber</mat-label>
+			<mat-select formControlName="selectedChamber">
+				<mat-option *ngFor="let chamber of chambers" [value]="chamber.value" >
+					{{chamber.displayText}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</form>
+</div>
