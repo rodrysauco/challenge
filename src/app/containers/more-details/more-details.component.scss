@@ -1,0 +1,21 @@
+.more-details {
+  padding: 52px 10px 0 10px;
+
+  &__back {
+		display: flex;
+    align-items: center;
+    color: blue;
+    font-size: 15px;
+    width: 85px;
+    justify-content: flex-start;
+
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	
+	&__link a{
+		color: blue;
+		text-decoration: none;
+	}
+}

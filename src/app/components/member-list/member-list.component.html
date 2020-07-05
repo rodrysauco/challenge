@@ -1,1 +1,12 @@
-<p>member-list works!</p>
+<div class="member-list">
+	<div class="member-list__header">
+		SARASA
+	</div>
+	<div class="member-list__body">
+		<app-member-list-item
+		*ngFor="let member of memberList"
+		[member]="member"
+		(select)="handleSelect($event)"
+		></app-member-list-item>
+	</div>
+</div>

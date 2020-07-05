@@ -1,1 +1,10 @@
-<p>chamber works!</p>
+<div class="chamber">
+	<div class="chamber__title">
+		<p>Showing information about chamber {{data?.results[0].chamber}} of Congress Nº{{data?.results[0].congress}}</p>
+	</div>
+	<app-member-list 
+		[memberList]="data?.results[0].members"
+		(selectedMember)="showMemberInfo($event)"
+		>
+	</app-member-list>
+</div>
