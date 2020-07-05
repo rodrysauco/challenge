@@ -1,7 +1,5 @@
 <div class="member-list">
-	<div class="member-list__header">
-		SARASA
-	</div>
+	<app-search (search)="onSearch($event)"></app-search>
 	<div class="member-list__body">
 		<app-member-list-item
 		*ngFor="let member of memberList"

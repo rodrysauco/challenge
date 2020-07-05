@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-search",
@@ -7,16 +7,40 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ["./search.component.scss"],
 })
 export class SearchComponent implements OnInit {
-  chambers = [
-    { displayText: "House", value: "house" },
-    { displayText: "Senate", value: "senate" },
-	];
-	searchForm = this.fb.group({
-		selectedCongress:[''],
-		selectedChamber:['']
-	})
-	
-  constructor(private fb:FormBuilder) {}
+  @Output() search = new EventEmitter();
+  options = [
+    { displayText: "Title", value: "title" },
+    { displayText: "Name", value: "name" },
+    { displayText: "Gender", value: "gender" },
+    { displayText: "Party", value: "party" },
+  ];
+  genders = [
+    { displayText: "Male", value: "M" },
+    { displayText: "Female", value: "F" },
+  ];
+  parties = [
+    { displayText: "Democratic", value: "D" },
+    { displayText: "Republican", value: "R" },
+  ];
+
+  searchForm = this.fb.group({
+    searchOption: ["", Validators.required],
+    searchValue: ["", Validators.required],
+  });
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {}
+
+  cleanFormField() {
+    this.searchForm.patchValue({ searchValue: '' });
+  }
+
+  get optionSelected() {
+    return this.searchForm.get("searchOption").value;
+  }
+
+  doSearch() {
+    this.search.emit(this.searchForm.value);
+  }
 }

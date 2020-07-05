@@ -1,0 +1,16 @@
+.search {
+  display: flex;
+
+  &__form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__actions {
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+  }
+}
