@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 import { CongressApiService } from "src/app/services/congress-api.service";
 import { switchMap } from "rxjs/operators";
+import { SpinnerService } from "src/app/shared/services/spinner.service";
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: "app-more-details",
@@ -13,7 +15,9 @@ export class MoreDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CongressApiService
+    private service: CongressApiService,
+    private spinnerService: SpinnerService,
+    private snackBar:MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -27,8 +31,12 @@ export class MoreDetailsComponent implements OnInit {
   }
 
   searchMember(memberId) {
-    this.service
-      .getSpecificMember(memberId)
-      .subscribe((response) => (this.congressMember = response));
+    this.service.getSpecificMember(memberId).subscribe(
+      (response) => (this.congressMember = response),
+      (error) => {
+        this.spinnerService.display(false);
+        this.snackBar.open(error,'Close');
+      }
+    );
   }
 }

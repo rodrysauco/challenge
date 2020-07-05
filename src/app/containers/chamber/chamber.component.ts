@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { CongressApiService } from "src/app/services/congress-api.service";
-import { Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { SpinnerService } from "src/app/shared/services/spinner.service";
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: "app-chamber",
@@ -13,14 +14,22 @@ export class ChamberComponent implements OnInit {
   filteredData: Array<any>;
   constructor(
     private congressService: CongressApiService,
-    private router: Router
+    private spinnerService: SpinnerService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
-    this.congressService.getAllMembers().subscribe((response) => {
-      this.data = response;
-      this.filteredData = this.data;
-    });
+    this.congressService.getAllMembers().subscribe(
+      (response) => {
+        this.data = response;
+        this.filteredData = this.data;
+      },
+      (error) => {
+        this.spinnerService.display(false);
+        this.snackBar.open(error,'Close');
+      }
+    );
   }
 
   showMemberInfo(memberId) {

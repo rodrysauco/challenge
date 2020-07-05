@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { Observable, of, throwError } from "rxjs";
+import { map, tap, catchError } from "rxjs/operators";
 import { SpinnerService } from "../shared/services/spinner.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class CongressApiService {
-  myData: Observable<any>
+  myData: any;
   baseUrl = "https://api.propublica.org/congress/v1";
 
   constructor(
@@ -25,7 +25,8 @@ export class CongressApiService {
       const url = `${this.baseUrl}/115/senate/members.json`;
       return this.http.get(url).pipe(
         tap(() => this.spinnerService.display(false)),
-        map((response) => this.transformMembers(response))
+        map((response) => this.transformMembers(response)),
+        catchError(this.handleError)
       );
     }
   }
@@ -35,18 +36,16 @@ export class CongressApiService {
     const url = `${this.baseUrl}/members/${id}.json`;
     return this.http.get(url).pipe(
       tap(() => this.spinnerService.display(false)),
-      map((response) => this.transformSpecificMember(response))
+      map((response) => this.transformSpecificMember(response)),
+      catchError(this.handleError)
     );
-  }
-
-  storeData(response) {
-    this.myData = response;
   }
 
   transformMembers(response) {
     let transformedResponse;
     if (response.status === "OK") {
       transformedResponse = response.results[0].members;
+      this.myData = transformedResponse;
     }
     return transformedResponse;
   }
@@ -79,5 +78,16 @@ export class CongressApiService {
     }
     data.current_party = party;
     return data;
+  }
+
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error("An error occured:", error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: ${error.error}`
+      );
+    }
+    return throwError("There was an error, please try again");
   }
 }

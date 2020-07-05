@@ -17,6 +17,7 @@ import {
   MatInputModule,
   MatCardModule,
   MatButtonModule,
+  MatSnackBarModule,
 } from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
 import { MemberListComponent } from "./components/member-list/member-list.component";
@@ -49,6 +50,7 @@ import { SpinnerComponent } from "./shared/spinner/spinner.component";
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
   ],
   providers: [HttpInterceptor],
