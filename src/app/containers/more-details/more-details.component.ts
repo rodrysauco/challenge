@@ -4,6 +4,7 @@ import { CongressApiService } from "src/app/services/congress-api.service";
 import { switchMap } from "rxjs/operators";
 import { SpinnerService } from "src/app/shared/services/spinner.service";
 import { MatSnackBar } from '@angular/material';
+import { CongressMember } from 'src/app/models/congressMember';
 
 @Component({
   selector: "app-more-details",
@@ -11,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ["./more-details.component.scss"],
 })
 export class MoreDetailsComponent implements OnInit {
-  congressMember;
+  congressMember : CongressMember;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

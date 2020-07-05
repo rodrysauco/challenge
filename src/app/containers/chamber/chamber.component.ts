@@ -3,6 +3,7 @@ import { CongressApiService } from "src/app/services/congress-api.service";
 import { Router } from "@angular/router";
 import { SpinnerService } from "src/app/shared/services/spinner.service";
 import { MatSnackBar } from "@angular/material";
+import { CongressMember } from 'src/app/models/congressMember';
 
 @Component({
   selector: "app-chamber",
@@ -10,8 +11,8 @@ import { MatSnackBar } from "@angular/material";
   styleUrls: ["./chamber.component.scss"],
 })
 export class ChamberComponent implements OnInit {
-  data: Array<any>;
-  filteredData: Array<any>;
+  data: Array<CongressMember>;
+  filteredData: Array<CongressMember>;
   constructor(
     private congressService: CongressApiService,
     private spinnerService: SpinnerService,

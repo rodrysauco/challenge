@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { CongressMember } from 'src/app/models/congressMember';
 
 @Component({
   selector: "app-member-list",
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./member-list.component.scss"],
 })
 export class MemberListComponent implements OnInit {
-  @Input() memberList: Array<any>;
+  @Input() memberList: Array<CongressMember>;
   @Output() selectedMember = new EventEmitter();
   @Output() search = new EventEmitter();
   @Output() reset = new EventEmitter();

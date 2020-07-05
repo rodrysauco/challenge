@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CongressMember } from 'src/app/models/congressMember';
 
 @Component({
   selector: 'app-member-list-item',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./member-list-item.component.scss']
 })
 export class MemberListItemComponent implements OnInit {
-	@Input() member:any;
+	@Input() member:CongressMember;
 	@Output() select = new EventEmitter();
   constructor() { }
 

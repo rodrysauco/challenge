@@ -3,12 +3,13 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, of, throwError } from "rxjs";
 import { map, tap, catchError } from "rxjs/operators";
 import { SpinnerService } from "../shared/services/spinner.service";
+import { CongressMember } from "../models/congressMember";
 
 @Injectable({
   providedIn: "root",
 })
 export class CongressApiService {
-  myData: any;
+  myData: Array<CongressMember>;
   baseUrl = "https://api.propublica.org/congress/v1";
 
   constructor(
@@ -16,7 +17,7 @@ export class CongressApiService {
     private spinnerService: SpinnerService
   ) {}
 
-  getAllMembers(): Observable<any> {
+  getAllMembers(): Observable<CongressMember[]> {
     this.spinnerService.display(true);
     if (this.myData) {
       this.spinnerService.display(false);
@@ -31,7 +32,7 @@ export class CongressApiService {
     }
   }
 
-  getSpecificMember(id): Observable<any> {
+  getSpecificMember(id): Observable<CongressMember> {
     this.spinnerService.display(true);
     const url = `${this.baseUrl}/members/${id}.json`;
     return this.http.get(url).pipe(
@@ -42,7 +43,7 @@ export class CongressApiService {
   }
 
   transformMembers(response) {
-    let transformedResponse;
+    let transformedResponse: Array<CongressMember>;
     if (response.status === "OK") {
       transformedResponse = response.results[0].members;
       this.myData = transformedResponse;
@@ -51,7 +52,7 @@ export class CongressApiService {
   }
 
   transformSpecificMember(response) {
-    const data = response.results[0];
+    const data: CongressMember = response.results[0];
     this.replaceGender(data);
     this.replaceParty(data);
     return data;
