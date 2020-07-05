@@ -1,12 +1,43 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { CongressApiService } from './congress-api.service';
+import { CongressApiService } from "./congress-api.service";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpTestingController } from "@angular/common/http/testing";
+import {
+  mockTransformedCongressMember,
+  mockCongressMember,
+} from "../mocks/mock-congress-member";
 
-describe('CongressApiService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe("CongressApiService", () => {
+  let congressService: CongressApiService;
+  const spinner = jasmine.createSpyObj("SpinnerService", ["display"]);
+  let httpMock: HttpTestingController;
 
-  it('should be created', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+      providers: [CongressApiService],
+    });
+    congressService = TestBed.get(CongressApiService);
+    httpMock = TestBed.get(HttpTestingController);
+  });
+
+  it("should be created", () => {
     const service: CongressApiService = TestBed.get(CongressApiService);
     expect(service).toBeTruthy();
+  });
+
+  it("should call api and get transformed response", () => {
+    const expected = mockTransformedCongressMember;
+    const id = expected.id;
+    congressService.getSpecificMember(id).subscribe((data) => {
+      expect(data).toEqual(expected);
+    });
+
+    const request = httpMock.expectOne(
+      `${congressService.baseUrl}/members/${id}.json`
+    );
+    expect(request.request.method).toBe("GET");
+    request.flush(mockCongressMember);
   });
 });

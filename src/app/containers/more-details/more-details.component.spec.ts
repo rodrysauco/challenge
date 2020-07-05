@@ -1,16 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MoreDetailsComponent } from './more-details.component';
+import { MoreDetailsComponent } from "./more-details.component";
+import { MatCardModule, MatSnackBarModule } from "@angular/material";
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientModule } from "@angular/common/http";
 
-describe('MoreDetailsComponent', () => {
+describe("MoreDetailsComponent", () => {
   let component: MoreDetailsComponent;
   let fixture: ComponentFixture<MoreDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoreDetailsComponent ]
-    })
-    .compileComponents();
+      declarations: [MoreDetailsComponent],
+      imports: [
+        MatCardModule,
+        RouterTestingModule,
+        HttpClientModule,
+        MatSnackBarModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +27,7 @@ describe('MoreDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
