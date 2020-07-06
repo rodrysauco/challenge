@@ -1,0 +1,48 @@
+<div class="search">
+  <form [formGroup]="searchForm" (ngSubmit)="doSearch()" class="search__form">
+    <mat-form-field class="search__input">
+      <mat-label>Search by</mat-label>
+      <mat-select formControlName="searchOption">
+        <mat-option
+          *ngFor="let option of options"
+          (click)="cleanFormField()"
+          [value]="option.value"
+        >
+          {{ option.displayText }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="search__input"
+      *ngIf="optionSelected === 'title' || optionSelected === 'name'"
+    >
+      <input formControlName="searchValue" matInput placeholder="Value" />
+    </mat-form-field>
+    <mat-form-field class="search__input" *ngIf="optionSelected === 'gender'">
+      <mat-label>Value</mat-label>
+      <mat-select formControlName="searchValue">
+        <mat-option *ngFor="let gender of genders" [value]="gender.value">
+          {{ gender.displayText }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="search__input" *ngIf="optionSelected === 'party'">
+      <mat-label>Value</mat-label>
+      <mat-select formControlName="searchValue">
+        <mat-option *ngFor="let party of parties" [value]="party.value">
+          {{ party.displayText }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="search__actions">
+      <button mat-stroked-button (click)="doReset()" type="reset">Reset</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!searchForm.valid"
+        type="submit"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</div>

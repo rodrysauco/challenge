@@ -1,0 +1,30 @@
+<div class="more-details" *ngIf="congressMember">
+  <div class="more-details__back" (click)="goBackToList()">
+    <i class="material-icons">chevron_left</i>Go Back
+  </div>
+  <mat-card class="more-details__card">
+    <mat-card-header>
+      <mat-card-title
+        >{{ congressMember.first_name }}
+        {{ congressMember.last_name }}</mat-card-title
+      >
+      <mat-card-subtitle *ngIf="congressMember.url">
+        <span class="more-details__link"
+          ><a target="_blank" href="{{ congressMember.url }}"
+            >Personal webpage</a
+          ></span
+        >
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Date of Birth: {{congressMember.date_of_birth | date:'mediumDate'}}</p>
+      <p>Gender: {{ congressMember.gender }}</p>
+      <p>Current party: {{ congressMember.current_party }}</p>
+      <p>Most recent vote: {{congressMember.most_recent_vote | date:'mediumDate'}}</p>
+    </mat-card-content>
+    <mat-card-actions class="more-details__actions"> 
+      <a target="_blank" href="https://twitter.com/{{congressMember.twitter_account}}"><img src="assets/logos/twitter.png" alt="Twitter"></a>
+      <a target="_blank" href="https://facebook.com/{{congressMember.facebook_account}}"><img src="assets/logos/facebook.png" alt="Twitter"></a>
+    </mat-card-actions>
+  </mat-card>
+</div>

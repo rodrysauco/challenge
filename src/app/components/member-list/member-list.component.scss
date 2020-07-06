@@ -1,0 +1,14 @@
+.member-list{
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+
+	&__body{
+		height: 70vh;
+		overflow-y: scroll;
+	}
+
+	&__body-empty{
+		text-align: center;
+	}
+}

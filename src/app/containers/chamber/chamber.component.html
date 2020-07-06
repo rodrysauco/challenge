@@ -1,0 +1,9 @@
+<div class="chamber">
+  <app-member-list
+    [memberList]="filteredData"
+    (selectedMember)="showMemberInfo($event)"
+    (search)="handleSearch($event)"
+    (reset)="handleReset()"
+  >
+  </app-member-list>
+</div>

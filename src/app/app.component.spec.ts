@@ -1,6 +1,23 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
+
+@Component({
+  selector:'app-header',
+  template:'<p>Header works!</p>'
+})
+class MockHeaderComponent{}
+@Component({
+  selector:'app-spinner',
+  template:'<p>Spinner works!</p>'
+})
+class MockSpinnerComponent{}
+@Component({
+  selector:'app-footer',
+  template:'<p>Footer works!</p>'
+})
+class MockFooterComponent{}
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,6 +26,9 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
+        MockHeaderComponent,
+        MockFooterComponent,
+        MockSpinnerComponent,
         AppComponent
       ],
     }).compileComponents();
@@ -26,10 +46,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('challenge');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('challenge app is running!');
-  });
 });
