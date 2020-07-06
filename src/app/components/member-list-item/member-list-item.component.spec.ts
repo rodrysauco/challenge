@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { MemberListItemComponent } from "./member-list-item.component";
-import { mockCongressMember } from "src/app/mocks/mock-congress-member";
+import { mockCongressMember } from "../../../mocks/mock-congress-member";
 import { By } from "@angular/platform-browser";
 
 describe("MemberListItemComponent", () => {

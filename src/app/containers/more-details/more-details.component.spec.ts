@@ -4,7 +4,7 @@ import { MoreDetailsComponent } from "./more-details.component";
 import { MatCardModule, MatSnackBarModule } from "@angular/material";
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { mockTransformedCongressMember } from "src/app/mocks/mock-congress-member";
+import { mockTransformedCongressMember } from "../../../mocks/mock-congress-member";
 import { of } from "rxjs";
 import { CongressApiService } from "src/app/services/congress-api.service";
 

@@ -8,7 +8,7 @@ import {
 import {
   mockTransformedCongressMember,
   mockCongressMember,
-} from "../mocks/mock-congress-member";
+} from "../../mocks/mock-congress-member";
 import { SpinnerService } from "../shared/services/spinner.service";
 
 describe("CongressApiService", () => {
