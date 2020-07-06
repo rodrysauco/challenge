@@ -2,11 +2,12 @@ import { TestBed } from "@angular/core/testing";
 
 import { CongressApiService } from "./congress-api.service";
 import { HttpClientModule } from "@angular/common/http";
-import { HttpTestingController } from "@angular/common/http/testing";
+import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
 import {
   mockTransformedCongressMember,
   mockCongressMember,
 } from "../mocks/mock-congress-member";
+import { SpinnerService } from "../shared/services/spinner.service";
 
 describe("CongressApiService", () => {
   let congressService: CongressApiService;
@@ -15,8 +16,8 @@ describe("CongressApiService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [CongressApiService],
+      imports: [HttpClientTestingModule],
+      providers: [CongressApiService, SpinnerService],
     });
     congressService = TestBed.get(CongressApiService);
     httpMock = TestBed.get(HttpTestingController);
