@@ -30,4 +30,5 @@ export const mockTransformedCongressMember = {
   twitter_account: "SenAlexander",
   url: "https://www.alexander.senate.gov/public",
   youtube_account: "lamaralexander",
-}
+};
+

@@ -45,6 +45,7 @@ export class SearchComponent implements OnInit {
   doReset() {
     this.reset.emit();
   }
+  
   doSearch() {
     this.search.emit(this.searchForm.value);
   }
