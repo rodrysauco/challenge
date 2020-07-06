@@ -11,3 +11,5 @@ Hope you like it.
 3) Open the console and run `npm install` for installing all the dependencies.
 4) Once you have installed all the dependencies run `ng serve` to check it out.
 5) You can also run `ng test` for testing purposes.
+
+### Page deployed to https://rodrysauco.github.io/challenge/results
