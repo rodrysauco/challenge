@@ -20,7 +20,7 @@
       <p>Date of Birth: {{congressMember.date_of_birth | date:'mediumDate'}}</p>
       <p>Gender: {{ congressMember.gender }}</p>
       <p>Current party: {{ congressMember.current_party }}</p>
-      <p>Most recent vote: {{congressMember.most_recent_vote}}</p>
+      <p>Most recent vote: {{congressMember.most_recent_vote | date:'mediumDate'}}</p>
     </mat-card-content>
     <mat-card-actions class="more-details__actions"> 
       <a target="_blank" href="https://twitter.com/{{congressMember.twitter_account}}"><img src="assets/logos/twitter.png" alt="Twitter"></a>
